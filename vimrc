@@ -19,6 +19,8 @@ filetype plugin indent on " Enable filetype-specific indenting and plugins
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:nmap <F2> :NERDTreeToggle<cr>
+
 
 " http://github.com/fabiokung/vimfiles/blob/6723ec056282f4d2d66d214c921111f57fa48035/vimrc
 let g:browser = 'open '
