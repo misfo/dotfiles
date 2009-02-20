@@ -1,0 +1,7 @@
+[user]
+	name = misfo
+	email = tedwardo2@gmail.com
+[color]
+	ui = true
+[core]
+	excludesfile = /Users/togren/.gitignore
