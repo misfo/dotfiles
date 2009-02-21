@@ -1,3 +1,5 @@
+syntax on
+
 " tab options
 set sts=2
 set shiftwidth=2
