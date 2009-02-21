@@ -28,20 +28,29 @@ task :install do
     next if %w[Rakefile README LICENSE].include? file
     
     if File.exist?(File.join(ENV['HOME'], ".#{file}"))
-      if replace_all
+      if is_linked?(file)
+        puts "~/.#{file} is already linked"
+      elsif replace_all
         replace_file(file)
       else
-        print "overwrite ~/.#{file}? [ynaq] "
-        case $stdin.gets.chomp
-        when 'a'
-          replace_all = true
-          replace_file(file)
-        when 'y'
-          replace_file(file)
-        when 'q'
-          exit
-        else
-          puts "skipping ~/.#{file}"
+        loop do
+          print "overwrite ~/.#{file}? [yndaq] "
+          case $stdin.gets.chomp
+          when 'a'
+            replace_all = true
+            replace_file(file)
+            break
+          when 'y'
+            replace_file(file)
+            break
+          when 'd'
+            system %Q{diff -ur "$HOME/.#{file}" "$PWD/#{file}"}
+          when 'q'
+            exit
+          else
+            puts "skipping ~/.#{file}"
+            break
+          end
         end
       end
     else
@@ -58,7 +67,7 @@ task :status do
   
   dotfiles.each do |fn|
     if File.exist?(fn.sub(/^\./, ''))
-      if File.symlink?(File.join(ENV['HOME'], fn))
+      if is_linked?(fn.sub(/^\./, ''))
         puts "I #{fn}"
       else
         puts "! #{fn}"
@@ -69,8 +78,13 @@ task :status do
   end
 end
 
+def is_linked?(file)
+  File.symlink?(File.join(ENV['HOME'], ".#{file}")) &&
+    File.readlink(File.join(ENV['HOME'], ".#{file}")) == File.expand_path(file)
+end
+
 def replace_file(file)
-  system %Q{rm "$HOME/.#{file}"}
+  system %Q{rm -rf "$HOME/.#{file}"}
   link_file(file)
 end
 
