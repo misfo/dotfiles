@@ -65,7 +65,7 @@ task :status do
   dotfiles -= %w(. .. .dotfiles .DS_Store .Trash)
   dotfiles.reject! {|fn| fn =~ /(_history|\.tmp|~)$/ }
   
-  dotfiles.each do |fn|
+  dotfiles.sort.each do |fn|
     if File.exist?(fn.sub(/^\./, ''))
       if is_linked?(fn.sub(/^\./, ''))
         puts "I #{fn}"
