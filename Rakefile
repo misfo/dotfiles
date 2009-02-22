@@ -1,24 +1,24 @@
 require 'rake'
 
-desc "add a system's dot file (or directory) to the working directory"
+desc "add DOTFILE from system to the working directory"
 task :add do
-  dotfile = ENV['DOTFILE']
-  system_dotfile = File.join(ENV['HOME'], ".#{dotfile}")
+  file = File.basename(ENV['DOTFILE']).sub(/^\./, '') # normalize the input
+  file_from_system = File.join(ENV['HOME'], ".#{file}")
 
-  if !File.exist?(system_dotfile)
-    print "no file exists at #{system_dotfile}"
+  if !File.exist?(file_from_system)
+    print "no file exists at ~/#{file}"
     exit
-  elsif File.symlink?(system_dotfile)
-    print "the is already a symlink at #{system_dotfile}"
+  elsif File.symlink?(file_from_system)
+    print "the is already a symlink at ~/#{file}"
     exit
-  elsif File.exist?(dotfile)
-    print "overwrite #{dotfile}? [yn] "
+  elsif File.exist?(file)
+    print "overwrite #{file} in current directory? [yn] "
     exit if $stdin.gets.chomp != 'y'
   end
 
-  puts "moving #{File.directory?(system_dotfile) ? 'directory' : 'file'} #{system_dotfile.gsub(ENV['HOME'], '~')} into current directory"
-  system %Q{mv "#{system_dotfile}" "#{dotfile}"}
-  link_file(dotfile)
+  puts "moving #{File.directory?(file_from_system) ? 'directory' : 'file'} ~/.#{file} into current directory"
+  system %Q{mv "#{file_from_system}" "#{file}"}
+  link_file(file)
 end
 
 desc "install the dot files into user's home directory"
