@@ -15,6 +15,9 @@ set hlsearch
 set showcmd
 set ruler
 
+" allow mouse for all uses
+set mouse=a
+
 filetype plugin on
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
