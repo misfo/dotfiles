@@ -6,10 +6,10 @@ task :add do
   file_from_system = File.join(ENV['HOME'], ".#{file}")
 
   if !File.exist?(file_from_system)
-    print "no file exists at ~/#{file}"
+    puts "no file exists at ~/.#{file}"
     exit
   elsif File.symlink?(file_from_system)
-    print "the is already a symlink at ~/#{file}"
+    puts "the file is already a symlink at ~/.#{file}"
     exit
   elsif File.exist?(file)
     print "overwrite #{file} in current directory? [yn] "
