@@ -27,7 +27,7 @@ set foldlevelstart=99
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:nmap <F2> :NERDTreeToggle<cr>
+map <leader>d :NERDTreeToggle<CR>
 
 
 " http://github.com/fabiokung/vimfiles/blob/6723ec056282f4d2d66d214c921111f57fa48035/vimrc
