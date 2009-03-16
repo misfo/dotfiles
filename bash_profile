@@ -4,6 +4,13 @@ export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 export LESS=' --RAW-CONTROL-CHARS'
 
 export EDITOR='vim'
+if command -v mvim &> /dev/null; then
+  export VISUAL='mvim'
+elif command -v gvim &> /dev/null; then
+  export VISUAL='gvim'
+else
+  export VISUAL=$EDITOR
+fi
 
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc

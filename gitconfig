@@ -4,4 +4,5 @@
 [color]
 	ui = true
 [core]
+	editor = vim
 	excludesfile = /Users/togren/.gitignore
