@@ -6,3 +6,5 @@
 [core]
 	editor = vim
 	excludesfile = /Users/togren/.gitignore
+[github]
+	user = misfo
