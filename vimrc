@@ -24,6 +24,9 @@ filetype plugin indent on " Enable filetype-specific indenting and plugins
 set foldmethod=syntax
 set foldlevelstart=99
 
+" highlight trailing whitespace
+match Error /\s\+$/
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
