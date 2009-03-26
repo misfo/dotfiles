@@ -23,7 +23,7 @@ fi
 if [ -f /opt/local/share/doc/git-core/contrib/completion/git-completion.bash ]; then
   git_completion='/opt/local/share/doc/git-core/contrib/completion/git-completion.bash'
 fi
-if [ -f $git_completion ]; then
+if [ $git_completion ]; then
   source $git_completion
   GIT_PS1_SHOWDIRTYSTATE='1'
   PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]$(__git_ps1 "\[\033[01;33m\](%s)\[\033[00m\]")\$ '
