@@ -27,6 +27,19 @@ set foldlevelstart=99
 " highlight trailing whitespace
 match Error /\s\+$/
 
+let NERDTreeChDirMode=2
+
+" changes the present working directory only if passed a directory
+function! s:chDirIfDir(dir)
+  if a:dir != '' && isdirectory(a:dir)
+    exec 'cd %:p:h'
+  endif
+endfunction
+
+" cd into the directory if a directory is edited (e.g. vim /usr/bin,
+" :e some/dir)
+au BufEnter,VimEnter * call s:chDirIfDir(expand("<amatch>"))
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
