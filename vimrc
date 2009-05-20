@@ -24,8 +24,12 @@ filetype plugin indent on " Enable filetype-specific indenting and plugins
 set foldmethod=syntax
 set foldlevelstart=99
 
-" highlight trailing whitespace
-match Error /\s\+$/
+" highlight trailing whitespace only when it's not before the insert cursor
+highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+autocmd BufWinEnter,InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhiteSpace /\s\+\%#\@<!$/
+
 
 let NERDTreeChDirMode=2
 
