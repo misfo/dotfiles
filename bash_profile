@@ -20,8 +20,8 @@ if [ -d ~/bin ] ; then
   PATH=~/bin:"${PATH}"
 fi
 
-if [ -f /opt/local/share/doc/git-core/contrib/completion/git-completion.bash ]; then
-  source /opt/local/share/doc/git-core/contrib/completion/git-completion.bash
+if [ -f ~/Code/git-completion.bash ]; then
+  source ~/Code/git-completion.bash
 fi
 if command -v __git_ps1 &> /dev/null; then
   GIT_PS1_SHOWDIRTYSTATE='1'
