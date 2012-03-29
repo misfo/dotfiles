@@ -8,14 +8,25 @@ IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 
 IRB.conf[:AUTO_INDENT] = true
 
-# adapted from http://github.com/gilesbowkett/utility-belt/blob/0a542e50a3c27f883688358f70c89719be651e4b/lib/utility_belt/interactive_editor.rb
-def vim
-  unless @vim_tempfile
-    @vim_tempfile = Tempfile.new("irb_tempfile")
+def edit_file(file)
+  full_filename = if file
+                    File.expand_path file
+                  else
+                    @vim_tempfile ||= File.join("", "tmp", "irb_#{Time.now.strftime '%Y-%m-%d_%H-%M'}.rb")
+                  end
+  yield full_filename
+  eval File.read(full_filename)
+end
+
+def subl(file=nil)
+  edit_file file do |filename|
+    system "subl", "-w", filename
   end
-  system(%[vim -c ":set syntax=ruby" #{@vim_tempfile.path}])
-  Object.class_eval(`cat #{@vim_tempfile.path}`)
-rescue Exception => error
-  puts error
+end
+
+def vim(file=nil)
+  edit_file file do |filename|
+    system "vim", filename
+  end
 end
 alias :vi :vim
