@@ -5,6 +5,6 @@
 	ui = true
 [core]
 	editor = vim
-	excludesfile = /Users/togren/.gitignore
+	excludesfile = ~/.global_gitignore
 [github]
 	user = misfo
