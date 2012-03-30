@@ -8,25 +8,27 @@ IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 
 IRB.conf[:AUTO_INDENT] = true
 
-def edit_file(file)
-  full_filename = if file
-                    File.expand_path file
-                  else
-                    @vim_tempfile ||= File.join("", "tmp", "irb_#{Time.now.strftime '%Y-%m-%d_%H-%M'}.rb")
-                  end
-  yield full_filename
-  eval File.read(full_filename)
-end
+EDITORS = {
+  :subl => lambda do |filename, line_number, wait|
+    system "subl", *((wait ? ["-w"] : []) + ["#{filename}:#{line_number}"])
+  end,
+  :vim => lambda do |filename, line_number, wait|
+    system "vim", "+#{line_number}", filename
+  end
+}
+TEMPFILE = File.join "", "tmp", "irb_#{Time.now.strftime '%Y-%m-%d_%H-%M'}.rb"
 
-def subl(file=nil)
-  edit_file file do |filename|
-    system "subl", "-w", filename
+def edit_file(editor, file=nil, line=1)
+  file, line = nil, file if file.is_a? Numeric
+  edit = EDITORS.fetch editor
+  if file
+    edit[File.expand_path(file), line, false]
+  else
+    edit[TEMPFILE, line, true]
+    eval File.read(TEMPFILE)
   end
 end
 
-def vim(file=nil)
-  edit_file file do |filename|
-    system "vim", filename
-  end
-end
+def subl(*args) edit_file :subl, *args end
+def vim(*args)  edit_file :vim,  *args end
 alias :vi :vim
