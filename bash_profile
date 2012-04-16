@@ -10,10 +10,12 @@ fi
 export LESS=' --RAW-CONTROL-CHARS'
 
 export EDITOR='vim'
-if command -v mvim &> /dev/null; then
-  export VISUAL='mvim'
+if command -v subl &> /dev/null; then
+  export VISUAL='subl --wait'
+elif command -v mvim &> /dev/null; then
+  export VISUAL='mvim --nofork'
 elif command -v gvim &> /dev/null; then
-  export VISUAL='gvim'
+  export VISUAL='gvim --nofork'
 else
   export VISUAL=$EDITOR
 fi
