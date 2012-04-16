@@ -28,7 +28,9 @@ if [ -d ~/bin ] ; then
   PATH=~/bin:"${PATH}"
 fi
 
-if [ -f ~/Code/git-completion.bash ]; then
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+  source /usr/local/etc/bash_completion.d/git-completion.bash
+elif [ -f ~/Code/git-completion.bash ]; then
   source ~/Code/git-completion.bash
 fi
 if command -v __git_ps1 &> /dev/null; then
