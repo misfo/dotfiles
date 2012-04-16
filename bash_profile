@@ -1,5 +1,11 @@
 export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
+# rbenv
+if [ -d ~/.rbenv ] ; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
+
 # to fix coloring in less
 export LESS=' --RAW-CONTROL-CHARS'
 
