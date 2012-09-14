@@ -20,3 +20,7 @@ set mouse=a
 
 filetype plugin on
 filetype plugin indent on " Enable filetype-specific indenting and plugins
+
+" pathogen
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
