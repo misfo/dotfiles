@@ -31,6 +31,9 @@
 ;; (evil-mode 1)
 (add-hook 'find-file-hooks (lambda () (evil-local-mode nil)))
 
+; Clojure
+(add-to-list 'auto-mode-alist '("\\.dtm$" . clojure-mode))
+
 ; YAML
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
