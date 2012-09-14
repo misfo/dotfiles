@@ -29,7 +29,7 @@
 
 (require 'evil)
 ;; (evil-mode 1)
-;; (add-hook 'find-file-hooks (lambda () (evil-local-mode nil)))
+(add-hook 'find-file-hooks (lambda () (evil-local-mode nil)))
 
 ; YAML
 (autoload 'yaml-mode "yaml-mode" nil t)
