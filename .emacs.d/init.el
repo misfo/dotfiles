@@ -29,7 +29,7 @@
 
 (require 'evil)
 ;; (evil-mode 1)
-(add-hook 'find-file-hooks (lambda () (evil-local-mode nil)))
+;; (add-hook 'find-file-hooks (lambda () (evil-local-mode nil)))
 
 ; Clojure
 (add-to-list 'auto-mode-alist '("\\.dtm$" . clojure-mode))
