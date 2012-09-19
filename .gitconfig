@@ -8,3 +8,5 @@
 	excludesfile = ~/.global_gitignore
 [github]
 	user = misfo
+[alias]
+	pullsubs = !git pull && git submodule update --init --recursive
