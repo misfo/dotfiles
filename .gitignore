@@ -1,1 +1,26 @@
-*
+# ignore everything other than bin and dotfiles
+/*
+!.*
+!/bin
+
+# ... and this stuff
+.DS_Store
+/.*.history
+/.*_history
+/.CFUserTextEncoding
+/.Trash/
+/.bundler/
+/.cache/ctrlp/
+/.cups/lpoptions
+/.dbshell
+/.dropbox/
+/.erlang.cookie
+/.gem/
+/.ghc/ghci_history
+/.heroku/credentials
+/.lesshst
+/.m2/
+/.npm/
+/.pgpass
+/.ssh/
+/.viminfo
