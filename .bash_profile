@@ -1,5 +1,7 @@
 export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
+alias be='bundle exec'
+
 # rbenv
 if [ -d ~/.rbenv ] ; then
   export PATH="$HOME/.rbenv/bin:$PATH"
