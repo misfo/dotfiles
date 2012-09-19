@@ -3,14 +3,20 @@
 !.*
 !/bin
 
-# ... and this stuff
+# ... and ignore this stuff
+
+/.emacs.d/*
+!/.emacs.d/init.el
+
 .DS_Store
 /.*.history
 /.*_history
 /.CFUserTextEncoding
 /.Trash/
+/.account
 /.bundler/
 /.cache/ctrlp/
+/.chef/
 /.cups/lpoptions
 /.dbshell
 /.dropbox/
@@ -18,9 +24,14 @@
 /.gem/
 /.ghc/ghci_history
 /.heroku/credentials
+/.ido.last
+/.jenkins/jenkinsrb-config.json
 /.lesshst
 /.m2/
+/.netrc
 /.npm/
 /.pgpass
+/.recentf
 /.ssh/
+/.vim/.netrwhist
 /.viminfo
