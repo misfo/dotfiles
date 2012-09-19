@@ -8,10 +8,10 @@
 /.emacs.d/*
 !/.emacs.d/init.el
 
-.DS_Store
 /.*.history
 /.*_history
 /.CFUserTextEncoding
+/.DS_Store
 /.Trash/
 /.account
 /.bundler/
@@ -19,6 +19,7 @@
 /.chef/
 /.cups/lpoptions
 /.dbshell
+/.drip/
 /.dropbox/
 /.erlang.cookie
 /.gem/
