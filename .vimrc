@@ -27,3 +27,7 @@ au BufNewFile,BufRead *.dtm setf clojure
 " pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
+
+" ctrlp.vim
+let g:ctrlp_extensions = ['tag', 'buffertag']
+let g:ctrlp_working_path_mode = 0
