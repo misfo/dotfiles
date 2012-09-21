@@ -3,7 +3,7 @@
 !.*
 !/bin
 
-# ... and ignore this stuff
+# ... and ignore these dotfiles
 
 /.emacs.d/*
 !/.emacs.d/init.el
@@ -27,6 +27,7 @@
 /.heroku/credentials
 /.ido.last
 /.jenkins/jenkinsrb-config.json
+/.lein/self-installs/
 /.lesshst
 /.m2/
 /.netrc
