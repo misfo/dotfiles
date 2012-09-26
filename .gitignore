@@ -33,6 +33,7 @@
 /.netrc
 /.npm/
 /.pgpass
+/.rnd
 /.recentf
 /.ssh/
 /.vim/.netrwhist
