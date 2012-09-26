@@ -1,10 +1,11 @@
-.DS_Store
-.svn
-.*.swo
-.*.swp
-*~
 *.pyc
 *.sublime-workspace
-\#*\#
+*~
+.*.swo
+.*.swp
+.DS_Store
 .\#*
+.svn
+.swp
+\#*\#
 doc/tags
