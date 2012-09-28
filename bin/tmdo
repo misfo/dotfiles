@@ -1,0 +1,21 @@
+#!/bin/sh
+
+wname=$1
+# cmd=$2
+shift
+cmd="$@"
+
+found_window="$(tmux list-windows | grep "^[0-9]\+:[ ]*$wname[ ]")"
+if [ -z "$found_window" ]; then
+  tmux set-option set-remain-on-exit on
+  tmux new-window -n "$wname" "$cmd"
+  #TODO set to previous
+  tmux set-option set-remain-on-exit off
+else
+  tmux select-window -t "$wname"
+  if [ -z "$cmd" ]; then
+    tmux respawn-window -k -t "$wname"
+  else
+    tmux respawn-window -k -t "$wname" "$cmd"
+  fi
+fi
