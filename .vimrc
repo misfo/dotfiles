@@ -23,6 +23,7 @@ filetype plugin indent on " Enable filetype-specific indenting and plugins
 
 " file extension associations
 au BufNewFile,BufRead *.dtm setf clojure
+au BufNewFile,BufRead *.edn setf clojure
 
 " Automatically run ctags
 au BufWritePost *.rb silent !ctags -R &
