@@ -25,9 +25,6 @@ filetype plugin indent on " Enable filetype-specific indenting and plugins
 au BufNewFile,BufRead *.dtm setf clojure
 au BufNewFile,BufRead *.edn setf clojure
 
-" Automatically run ctags
-au BufWritePost *.rb silent !ctags -R &
-
 " pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()

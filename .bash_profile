@@ -1,33 +1,33 @@
 export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
-alias be='bundle exec'
+if [ -d ~/.cabal ]; then
+  PATH="$HOME/.cabal/bin:$PATH"
+fi
 
-# rbenv
-if [ -d ~/.rbenv ] ; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
+if [ -d ~/.rbenv ]; then
+  PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
 
-# to fix coloring in less
-export LESS=' --RAW-CONTROL-CHARS'
+if [ -d ~/bin ]; then
+  PATH=~/bin:"${PATH}"
+fi
+
+alias be='bundle exec'
 
 export EDITOR='vim'
-if command -v subl &> /dev/null; then
-  export VISUAL='subl --wait'
-elif command -v mvim &> /dev/null; then
+if command -v mvim &> /dev/null; then
   export VISUAL='mvim --nofork'
 elif command -v gvim &> /dev/null; then
   export VISUAL='gvim --nofork'
+elif command -v subl &> /dev/null; then
+  export VISUAL='subl --wait'
 else
   export VISUAL=$EDITOR
 fi
 
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
-fi
-
-if [ -d ~/bin ] ; then
-  PATH=~/bin:"${PATH}"
 fi
 
 if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
