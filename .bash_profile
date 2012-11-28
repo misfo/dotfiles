@@ -30,11 +30,14 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-  source /usr/local/etc/bash_completion.d/git-completion.bash
-elif [ -f ~/Code/git-completion.bash ]; then
-  source ~/Code/git-completion.bash
-fi
+for dir in ~/Code /usr/share/git-core /usr/local/etc/bash_completion.d; do
+  gitcomp="$dir/git-completion.bash"
+  if [ -f "$gitcomp" ]; then
+    source "$gitcomp"
+    break
+  fi
+done
+
 if command -v __git_ps1 &> /dev/null; then
   GIT_PS1_SHOWDIRTYSTATE='1'
   GIT_PS1='$(__git_ps1 "\[\033[01;33m\](%s)\[\033[00m\]")'
