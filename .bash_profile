@@ -1,16 +1,13 @@
 export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
-if [ -d ~/.cabal ]; then
-  PATH="$HOME/.cabal/bin:$PATH"
-fi
+for bindir in ~/node_modules/.bin ~/.cabal/bin ~/.rbenv/bin ~/bin; do
+  if [ -d "$bindir" ]; then
+    PATH="$bindir:$PATH"
+  fi
+done
 
 if [ -d ~/.rbenv ]; then
-  PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
-fi
-
-if [ -d ~/bin ]; then
-  PATH=~/bin:"${PATH}"
 fi
 
 alias be='bundle exec'
