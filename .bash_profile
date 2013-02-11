@@ -27,13 +27,17 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
-for dir in ~/Code /usr/share/git-core /usr/local/etc/bash_completion.d; do
-  gitcomp="$dir/git-completion.bash"
-  if [ -f "$gitcomp" ]; then
-    source "$gitcomp"
-    break
-  fi
-done
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+else
+  for dir in ~/Code /usr/share/git-core /usr/local/etc/bash_completion.d; do
+    gitcomp="$dir/git-completion.bash"
+    if [ -f "$gitcomp" ]; then
+      source "$gitcomp"
+      break
+    fi
+  done
+fi
 
 if command -v __git_ps1 &> /dev/null; then
   GIT_PS1_SHOWDIRTYSTATE='1'
