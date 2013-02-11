@@ -10,3 +10,5 @@
 	user = misfo
 [alias]
 	pullsubs = !git pull && git submodule update --init --recursive
+[push]
+	default = upstream
