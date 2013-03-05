@@ -1,13 +1,14 @@
 export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
-for bindir in ~/node_modules/.bin ~/.cabal/bin ~/.rbenv/bin ~/bin; do
+for bindir in ~/node_modules/.bin ~/.cabal/bin ~/bin; do
   if [ -d "$bindir" ]; then
     PATH="$bindir:$PATH"
   fi
 done
 
-if [ -d ~/.rbenv ]; then
-  eval "$(rbenv init -)"
+if [ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
 fi
 
 alias be='bundle exec'
