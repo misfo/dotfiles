@@ -6,11 +6,6 @@ for bindir in ~/node_modules/.bin ~/.cabal/bin ~/bin; do
   fi
 done
 
-if [ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
-  source /usr/local/opt/chruby/share/chruby/auto.sh
-fi
-
 alias be='bundle exec'
 
 export EDITOR='vim'
@@ -48,4 +43,6 @@ else
 fi
 
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]$GIT_PS1\$ "
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
